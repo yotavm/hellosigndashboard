@@ -1,7 +1,24 @@
 {
-  "name": "root",
+  "name": "hellosigndashboard",
   "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "new-version": "lerna version --conventional-commits --yes",
+    "diff": "lerna diff",
+    "commit": "npx git-cz",
+    "start": "lerna run start"
+  },
   "devDependencies": {
-    "lerna": "^3.21.0"
+    "commitizen": "4.1.2",
+    "cz-conventional-changelog": "3.2.0",
+    "lerna": "3.21.0",
+    "prettier": "2.0.5"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
   }
 }
