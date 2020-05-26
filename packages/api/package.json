@@ -1,0 +1,9 @@
+{
+  "name": "@hellosigndashboard/api",
+  "version": "0.0.0",
+  "description": "this is serverless api package for hellosign dashboard ",
+  "main": "index.js",
+  "repository": "https://github.com/yotavm/hellosigndashboard/tree/master/packages/api",
+  "author": "yotav masa",
+  "license": "MIT"
+}
