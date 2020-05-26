@@ -1,9 +1,17 @@
 service: api
 app: hellosigndashboardapi
 org: yotavm
+
 provider:
   name: aws
   runtime: nodejs12.x
+
+plugins:
+  - serverless-webpack
+
+package:
+  individually: true
+
 functions:
   hello:
     handler: handler.hello
@@ -11,3 +19,9 @@ functions:
       - http:
           method: get
           path: users/create
+  getList:
+    handler: functions/getSignrequestsList.getList
+    events:
+      - http:
+          method: get
+          path: signRequests
