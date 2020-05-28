@@ -1,15 +1,19 @@
-const Boom = require("boom");
+import Boom from "boom";
+import { map } from "lodash";
+import {
+  getSignatureRequestList,
+  normalizeSignatureRequest,
+} from "../services/hellosign";
 
-module.exports.getList = async (event) => {
+export const getList = async (event) => {
+  const { signature_requests } = await getSignatureRequestList();
+  const normalizeSignatureRequestList = map(
+    signature_requests,
+    normalizeSignatureRequest
+  );
+
   return {
     statusCode: 200,
-    body: JSON.stringify(
-        {
-          message: 'Go Serverless v1.0! Your function executed successfully!',
-          input: event,
-        },
-        null,
-        2
-    ),
+    body: JSON.stringify(normalizeSignatureRequestList),
   };
 };

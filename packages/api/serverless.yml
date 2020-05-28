@@ -8,6 +8,7 @@ provider:
 
 plugins:
   - serverless-webpack
+  - serverless-offline
 
 package:
   individually: true
@@ -25,3 +26,9 @@ functions:
       - http:
           method: get
           path: signRequests
+
+custom:
+  webpack:
+    webpackConfig: "webpack.config.js" # name of webpack configuration file
+    includeModules: true # add excluded modules to the bundle
+    packager: "npm" # package manager we use
