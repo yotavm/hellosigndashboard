@@ -14,14 +14,10 @@ package:
   individually: true
 
 functions:
-  hello:
-    handler: handler.hello
-    events:
-      - http:
-          method: get
-          path: users/create
   getList:
-    handler: functions/getSignrequestsList.getList
+    handler: functions/signRequests.getList
+    environment:
+
     events:
       - http:
           method: get

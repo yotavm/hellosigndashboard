@@ -1,4 +1,3 @@
-import Boom from "boom";
 import { map } from "lodash";
 import {
   getSignatureRequestList,
