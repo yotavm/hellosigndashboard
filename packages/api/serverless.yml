@@ -5,6 +5,9 @@ org: yotavm
 provider:
   name: aws
   runtime: nodejs12.x
+  environment:
+    HELLOSIGN_API_KEY: ${ssm:/HELLOSIGN_API_KEY~true}
+    HELLOSIGN_APP_CLIENT_ID: ${ssm:/HELLOSIGN_APP_CLIENT_ID~true}
 
 plugins:
   - serverless-webpack
@@ -16,8 +19,6 @@ package:
 functions:
   getList:
     handler: functions/signRequests.getList
-    environment:
-
     events:
       - http:
           method: get
