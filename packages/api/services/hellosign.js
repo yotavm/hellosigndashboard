@@ -33,6 +33,7 @@ export const getSignatureRequestList = (
         page: page,
         page_size: pageSize,
       }),
+      query:`staging AND IDR`
   };
 
   return hellosign.signatureRequest.list(listOptions);

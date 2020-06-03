@@ -23,9 +23,41 @@ functions:
       - http:
           method: get
           path: signRequests
+  login:
+    handler: functions/auth.login
+    events:
+      - http:
+          method: post
+          path: login
 
 custom:
   webpack:
     webpackConfig: "webpack.config.js" # name of webpack configuration file
     includeModules: true # add excluded modules to the bundle
     packager: "npm" # package manager we use
+
+resources:
+  Resources:
+    UsersTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: users
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        BillingMode: PAY_PER_REQUEST
+
+    SessionTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: usersSessions
+        AttributeDefinitions:
+          - AttributeName: sid
+            AttributeType: S
+        KeySchema:
+          - AttributeName: sid
+            KeyType: HASH
+        BillingMode: PAY_PER_REQUEST
